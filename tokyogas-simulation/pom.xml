@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.natswell.sample.drools</groupId>
+  <artifactId>drools-sample-tokyogas-simulation</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <properties>
+    <!-- プロジェクト設定 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    
+    <!-- ビルド -->
+    <version.maven-compiler-plugin>3.1</version.maven-compiler-plugin>
+  </properties>
+
+ <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.maven-compiler-plugin}</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>inhouse.repo</id>
+      <name>Inhouse Repository</name>
+      <url>${distribution.repository.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <dependencies>
+    <!-- BRMS -->
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-compiler</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-decisiontables</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-ci</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- LOGGING -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <!-- TESTING -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.bom.brms</groupId>
+        <artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
+        <version>${version.brms}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>jboss-ga-repository</id>
+      <url>https://maven.repository.redhat.com/ga</url>
+    </repository>
+  </repositories>
+
+  <profiles>
+    <profile>
+      <id>version-6.2</id>
+      <activation><activeByDefault>true</activeByDefault></activation>
+      <properties>
+        <version.brms>6.2.3.GA-redhat-3</version.brms>
+      </properties>
+    </profile>
+    <profile>
+      <id>version-6.3</id>
+      <properties>
+        <version.brms>6.3.3.GA-redhat-2</version.brms>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>

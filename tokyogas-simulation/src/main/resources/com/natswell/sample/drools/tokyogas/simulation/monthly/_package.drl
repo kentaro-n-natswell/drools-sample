@@ -1,0 +1,8 @@
+package com.natswell.sample.drools.tokyogas.simulation.monthly;
+
+// packageで共通のimport宣言
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+// packageで共通のルール属性宣言
+dialect "mvel"
