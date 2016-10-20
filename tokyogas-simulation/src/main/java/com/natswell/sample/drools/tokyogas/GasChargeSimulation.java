@@ -42,12 +42,24 @@ public class GasChargeSimulation {
 		public String getJpname() { return jpname; }
 		public String getCode() { return code; }
 	}
+	public enum Option {
+		BATH("バス暖割", ""),
+		ECO("エコ割", ""),
+		SET("セット割", "");
+		public String jpname;
+		public String code;
+		Option(String jpname, String code) {
+			this.jpname = jpname;
+			this.code = code;
+		}
+	}
 	private String id;
 	private List<GasInstrument> instruments;
 	private Area livingArea;
 	private Integer sampleManth;
 	private Double sampleConsumption;
 	private Contract currentContract;
+	private Option currentOption;
 	public String getId() {
 		return id;
 	}
@@ -83,5 +95,11 @@ public class GasChargeSimulation {
 	}
 	public void setCurrentContract(Contract currentContract) {
 		this.currentContract = currentContract;
+	}
+	public Option getCurrentOption() {
+		return currentOption;
+	}
+	public void setCurrentOption(Option currentOption) {
+		this.currentOption = currentOption;
 	}
 }

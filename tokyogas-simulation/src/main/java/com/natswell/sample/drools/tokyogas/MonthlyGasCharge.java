@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.natswell.sample.drools.tokyogas.GasChargeSimulation.Area;
 import com.natswell.sample.drools.tokyogas.GasChargeSimulation.Contract;
+import com.natswell.sample.drools.tokyogas.GasChargeSimulation.Option;
 
 public class MonthlyGasCharge {
 	enum DivisionSeason {
@@ -16,8 +17,10 @@ public class MonthlyGasCharge {
 
 	// 計算対象月
 	private Integer targetMonth;
-	// 契約
+	// 料金メニュー
 	private String contract;
+	// 割引メニュー
+	private String option;
 	// 地区
 	private String area;
 	// ガス使用量
@@ -31,6 +34,13 @@ public class MonthlyGasCharge {
 	private BigDecimal specificCharge;
 	// 従量料金の単位料金
 	private BigDecimal specificChargeRate;
+
+	// 割引額
+	private BigDecimal discount;
+	// 割引率
+	private BigDecimal discountRate;
+	// 割引上限額
+	private BigDecimal discountLimit;
 
 	// 料金表
 	private String rateTable;
@@ -85,6 +95,9 @@ public class MonthlyGasCharge {
 	public void setContract(Contract contract) {
 		this.contract = contract.jpname;
 	}
+	public void setOption(Option option) {
+		this.option = option.jpname;
+	}
 	public void setArea(Area area) {
 		this.area = area.jpname;
 	}
@@ -97,6 +110,9 @@ public class MonthlyGasCharge {
 	}
 	public String getContract() {
 		return contract;
+	}
+	public String getOption() {
+		return option;
 	}
 	public String getArea() {
 		return area;
@@ -136,5 +152,23 @@ public class MonthlyGasCharge {
 	}
 	public void setRateTable(String rateTable) {
 		this.rateTable = rateTable;
+	}
+	public BigDecimal getDiscount() {
+		return discount;
+	}
+	public void setDiscount(BigDecimal discount) {
+		this.discount = discount;
+	}
+	public BigDecimal getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(BigDecimal discountRate) {
+		this.discountRate = discountRate;
+	}
+	public BigDecimal getDiscountLimit() {
+		return discountLimit;
+	}
+	public void setDiscountLimit(BigDecimal discountLimit) {
+		this.discountLimit = discountLimit;
 	}
 }
